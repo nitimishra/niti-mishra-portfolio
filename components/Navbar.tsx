@@ -58,7 +58,9 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-4">
           <a
             href={profile.resumeHref}
-            download
+            target="_blank"
+            rel="noopener noreferrer"
+            download="Niti_Mishra_Resume.pdf"
             className="datalumina-secondary-pill inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full font-mono text-[13px] font-semibold text-white hover:border-accent-blue/50"
           >
             <Download className="w-3.5 h-3.5 text-accent-blueLight" />
@@ -99,7 +101,9 @@ export default function Navbar() {
           <div className="pt-4 border-t border-white/[0.08]">
             <a
               href={profile.resumeHref}
-              download
+              target="_blank"
+              rel="noopener noreferrer"
+              download="Niti_Mishra_Resume.pdf"
               onClick={() => setIsOpen(false)}
               className="datalumina-pill-cta inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold text-white w-full justify-center"
             >

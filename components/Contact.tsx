@@ -32,7 +32,9 @@ export default function Contact() {
 
           <a
             href={profile.resumeHref}
-            download
+            target="_blank"
+            rel="noopener noreferrer"
+            download="Niti_Mishra_Resume.pdf"
             className="datalumina-secondary-pill inline-flex items-center gap-2 px-6 py-3 rounded-full font-mono text-sm font-semibold text-zinc-300 hover:text-white"
           >
             <Download className="w-4 h-4 text-accent-blueLight" />
