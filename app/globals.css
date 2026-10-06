@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400;1,600&family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-bg-primary: #07080C;
+  --color-bg-secondary: #0D0F17;
+  --color-accent-blue: #2563EB;
+  --color-accent-blue-deep: #1D4ED8;
+  --color-accent-blue-tint: #60A5FA;
+  --color-accent-purple-tint: #A78BFA;
+  
+  --font-sans: 'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-serif: 'IBM Plex Serif', Georgia, Cambria, serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --gradient-heading-text: linear-gradient(180deg, #FFFFFF 0%, #CBD5E1 70%, #94A3B8 100%);
+  --gradient-hero-glow: radial-gradient(circle at 50% 10%, rgba(37, 99, 235, 0.28) 0%, rgba(13, 15, 23, 0) 70%);
+  --gradient-card-fill: linear-gradient(180deg, rgba(20, 26, 42, 0.6) 0%, rgba(11, 14, 23, 0.8) 100%);
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg-primary);
+  color: #94A3B8;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  selection-background-color: #2563EB;
+  selection-color: #FFFFFF;
+}
+
+::selection {
+  background: #2563EB;
+  color: #FFFFFF;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #07080C;
+}
+::-webkit-scrollbar-thumb {
+  background: #1E2538;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2563EB;
+}
+
+/* Datalumina Typography classes */
+.text-display {
+  font-size: clamp(2.5rem, 5.5vw, 4.25rem);
+  line-height: 1.1;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+}
+
+.font-serif-italic {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  background-image: linear-gradient(135deg, #93C5FD 0%, #C7D2FE 50%, #FFFFFF 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Datalumina glow badges & cards */
+.datalumina-card {
+  background: linear-gradient(180deg, rgba(19, 25, 41, 0.7) 0%, rgba(11, 14, 23, 0.85) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.datalumina-card:hover {
+  border-color: rgba(59, 130, 246, 0.35);
+  box-shadow: 0 16px 40px -12px rgba(37, 99, 235, 0.25), 0 0 20px -2px rgba(59, 130, 246, 0.15);
+  transform: translateY(-2px);
+}
+
+.datalumina-pill-cta {
+  background-image: linear-gradient(90deg, #2563EB 0%, #1D4ED8 100%);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 10px 25px -5px rgba(37, 99, 235, 0.45);
+  transition: all 0.2s ease;
+}
+
+.datalumina-pill-cta:hover {
+  opacity: 0.94;
+  transform: translateY(-1px);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.5), 0 12px 30px -4px rgba(37, 99, 235, 0.6);
+}
+
+.datalumina-secondary-pill {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: all 0.2s ease;
+}
+
+.datalumina-secondary-pill:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: #FFFFFF;
+}
+
+@keyframes ringPulse {
+  0%, 100% { opacity: 0.35; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.02); }
+}
+
+.animate-ring-pulse {
+  animation: ringPulse 6s ease-in-out infinite;
+}
