@@ -83,7 +83,7 @@ export default function Capabilities() {
       ],
     },
     {
-      category: "Verified Credentials",
+      category: "Certifications & Achievements",
       items: [
         "Anthropic AI-Fluency",
         "Anthropic Claude 101",

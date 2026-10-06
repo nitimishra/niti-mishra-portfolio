@@ -40,7 +40,7 @@ export const keyStats = [
   },
   {
     value: "04",
-    label: "Verified Credentials",
+    label: "Certifications & Achievements",
     detail: "Anthropic Claude & AI-Fluency, IIT Dhanbad, SIH",
   },
 ];
