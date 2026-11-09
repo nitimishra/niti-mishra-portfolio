@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Menu, X, ArrowUpRight, Download } from "lucide-react";
+import { Menu, X, Phone, Mail, Linkedin, Github } from "lucide-react";
 import { profile } from "@/lib/data";
 
 export default function Navbar() {
@@ -16,100 +16,135 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const navItems = [
+    { label: "About", href: "#about" },
+    { label: "Work", href: "#work" },
+    { label: "Dashboards", href: "#dashboards" },
+    { label: "Featured", href: "#featured" },
+    { label: "Toolkit", href: "#toolkit" },
+    { label: "Internships", href: "#internships" },
+    { label: "Certifications", href: "#certifications" },
+    { label: "Contact", href: "#contact" },
+  ];
+
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-[#07080C]/90 backdrop-blur-xl border-b border-white/[0.08] shadow-2xl"
+          ? "bg-[#09090D]/85 backdrop-blur-md border-b border-white/[0.06] shadow-lg shadow-black/40"
           : "bg-transparent border-b border-transparent"
       }`}
     >
-      <div className="mx-auto max-w-6xl px-5 sm:px-8 h-16 flex items-center justify-between">
-        {/* Monospace Logo */}
-        <a href="#top" className="font-mono text-base font-bold tracking-tight text-white group">
-          niti<span className="text-accent-blueLight group-hover:text-white transition-colors">.</span>
+      <div className="mx-auto max-w-7xl px-6 sm:px-10 h-20 flex items-center justify-between">
+        {/* Left: SK.-style Logo with warm amber dot */}
+        <a href="#top" className="flex items-center gap-1 group">
+          <span className="text-2xl font-black tracking-tighter text-white font-sans group-hover:text-[#fbbf24] transition-colors">
+            NM<span className="text-[#fbbf24]">.</span>
+          </span>
         </a>
 
-        {/* Numbered Nav Links */}
-        <nav className="hidden md:flex items-center gap-8 font-mono text-[13px] text-zinc-400">
-          <a href="#about" className="transition-colors hover:text-white flex items-center gap-1.5">
-            <span className="text-accent-blueLight font-semibold">01</span>
-            <span>About</span>
-          </a>
-          <a href="#experience" className="transition-colors hover:text-white flex items-center gap-1.5">
-            <span className="text-accent-blueLight font-semibold">02</span>
-            <span>Work</span>
-          </a>
-          <a href="#projects" className="transition-colors hover:text-white flex items-center gap-1.5">
-            <span className="text-accent-blueLight font-semibold">03</span>
-            <span>Projects</span>
-          </a>
-          <a href="#skills" className="transition-colors hover:text-white flex items-center gap-1.5">
-            <span className="text-accent-blueLight font-semibold">04</span>
-            <span>Skills</span>
-          </a>
-          <a href="#contact" className="transition-colors hover:text-white flex items-center gap-1.5">
-            <span className="text-accent-blueLight font-semibold">05</span>
-            <span>Contact</span>
-          </a>
+        {/* Center: Clean Text Navigation Bar */}
+        <nav className="hidden xl:flex items-center gap-7 text-[13px] font-medium text-zinc-400">
+          {navItems.map((item) => (
+            <a
+              key={item.label}
+              href={item.href}
+              className="hover:text-white transition-colors duration-150"
+            >
+              {item.label}
+            </a>
+          ))}
         </nav>
 
-        {/* Resume CTA Button */}
-        <div className="hidden md:flex items-center gap-4">
+        {/* Right: Social Action Icons */}
+        <div className="hidden sm:flex items-center gap-3.5 text-zinc-400">
           <a
-            href={profile.resumeHref}
-            target="_blank"
-            rel="noopener noreferrer"
-            download="Niti_Mishra_Resume.pdf"
-            className="datalumina-secondary-pill inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full font-mono text-[13px] font-semibold text-white hover:border-accent-blue/50"
+            href={`tel:${profile.phone}`}
+            title="Call"
+            className="p-2 rounded-full hover:text-white hover:bg-white/[0.06] transition-colors"
           >
-            <Download className="w-3.5 h-3.5 text-accent-blueLight" />
-            <span>R&eacute;sum&eacute;</span>
+            <Phone className="w-4 h-4" />
           </a>
+
+          <a
+            href={`mailto:${profile.email}`}
+            title="Email"
+            className="p-2 rounded-full hover:text-white hover:bg-white/[0.06] transition-colors"
+          >
+            <Mail className="w-4 h-4" />
+          </a>
+
+          <a
+            href={profile.linkedin}
+            target="_blank"
+            rel="noreferrer"
+            title="LinkedIn"
+            className="p-2 rounded-full hover:text-white hover:bg-white/[0.06] transition-colors"
+          >
+            <Linkedin className="w-4 h-4" />
+          </a>
+
+          <a
+            href={profile.github}
+            target="_blank"
+            rel="noreferrer"
+            title="GitHub"
+            className="p-2 rounded-full hover:text-white hover:bg-white/[0.06] transition-colors"
+          >
+            <Github className="w-4 h-4" />
+          </a>
+
+          {/* Active status indicator dot */}
+          <div className="flex items-center gap-1.5 pl-2">
+            <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" title="Available for AI Engineer Roles" />
+          </div>
         </div>
 
-        {/* Mobile Toggle */}
+        {/* Mobile menu button */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          aria-label="Toggle navigation menu"
-          className="md:hidden p-2 text-zinc-300 hover:text-white"
+          aria-label="Toggle Navigation"
+          className="xl:hidden p-2 text-zinc-300 hover:text-white"
         >
-          {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Drawer */}
       {isOpen && (
-        <div className="md:hidden border-b border-white/[0.08] bg-[#0A0D15]/95 backdrop-blur-2xl px-6 py-6 space-y-4 font-mono text-sm">
-          <div className="flex flex-col space-y-3">
-            <a href="#about" onClick={() => setIsOpen(false)} className="text-zinc-300 hover:text-white flex items-center gap-2">
-              <span className="text-accent-blueLight">01</span> About
-            </a>
-            <a href="#experience" onClick={() => setIsOpen(false)} className="text-zinc-300 hover:text-white flex items-center gap-2">
-              <span className="text-accent-blueLight">02</span> Work
-            </a>
-            <a href="#projects" onClick={() => setIsOpen(false)} className="text-zinc-300 hover:text-white flex items-center gap-2">
-              <span className="text-accent-blueLight">03</span> Projects
-            </a>
-            <a href="#skills" onClick={() => setIsOpen(false)} className="text-zinc-300 hover:text-white flex items-center gap-2">
-              <span className="text-accent-blueLight">04</span> Skills
-            </a>
-            <a href="#contact" onClick={() => setIsOpen(false)} className="text-zinc-300 hover:text-white flex items-center gap-2">
-              <span className="text-accent-blueLight">05</span> Contact
-            </a>
+        <div className="xl:hidden bg-[#09090D]/95 backdrop-blur-2xl border-b border-white/[0.08] px-6 py-6 space-y-4">
+          <div className="flex flex-col space-y-3 text-sm font-medium text-zinc-300">
+            {navItems.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                onClick={() => setIsOpen(false)}
+                className="hover:text-white transition-colors"
+              >
+                {item.label}
+              </a>
+            ))}
           </div>
-          <div className="pt-4 border-t border-white/[0.08]">
-            <a
-              href={profile.resumeHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              download="Niti_Mishra_Resume.pdf"
-              onClick={() => setIsOpen(false)}
-              className="datalumina-pill-cta inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold text-white w-full justify-center"
-            >
-              <Download className="w-3.5 h-3.5" />
-              <span>Download R&eacute;sum&eacute;</span>
-            </a>
+
+          <div className="pt-4 border-t border-white/[0.08] flex items-center justify-between text-zinc-400">
+            <div className="flex items-center gap-4">
+              <a href={`tel:${profile.phone}`} className="hover:text-white">
+                <Phone className="w-4 h-4" />
+              </a>
+              <a href={`mailto:${profile.email}`} className="hover:text-white">
+                <Mail className="w-4 h-4" />
+              </a>
+              <a href={profile.linkedin} target="_blank" rel="noreferrer" className="hover:text-white">
+                <Linkedin className="w-4 h-4" />
+              </a>
+              <a href={profile.github} target="_blank" rel="noreferrer" className="hover:text-white">
+                <Github className="w-4 h-4" />
+              </a>
+            </div>
+            <span className="text-xs font-mono text-emerald-400 flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-emerald-400" />
+              AI Engineer
+            </span>
           </div>
         </div>
       )}
